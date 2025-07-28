@@ -104,6 +104,7 @@
             display: flex;
             gap: 5px;
             margin-left: 1.5rem;
+            position: relative;
         }
         
         .language-btn {
@@ -119,6 +120,14 @@
         
         .language-btn:hover, .language-btn.active {
             background: var(--accent);
+        }
+        
+        /* Nouveau style pour le sélecteur de langue mobile */
+        .mobile-language-switcher {
+            display: none;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 1.5rem;
         }
         
         /* Navigation */
@@ -460,9 +469,15 @@
             font-size: 1.3rem;
         }
         
-        .contact-text p {
+        .contact-text p, .contact-text a {
             color: var(--gray);
             line-height: 1.7;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .contact-text a:hover {
+            color: var(--primary);
         }
         
         .transport-options {
@@ -601,6 +616,29 @@
             transform: translateY(-5px);
         }
         
+        /* Language toggle button */
+        .mobile-lang-toggle {
+            background: var(--accent);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            font-size: 1.2rem;
+            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            transition: all 0.3s ease;
+            position: fixed;
+            bottom: 90px;
+            right: 20px;
+            z-index: 999;
+            display: none;
+        }
+        
+        .mobile-lang-toggle:hover {
+            transform: scale(1.1);
+        }
+        
         /* Animations */
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(30px); }
@@ -681,7 +719,23 @@
             }
             
             .language-switcher {
-                margin-left: 0.5rem;
+                position: absolute;
+                top: 70px;
+                right: 20px;
+                background: var(--primary-dark);
+                padding: 10px;
+                border-radius: 8px;
+                box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+                z-index: 1001;
+                display: none;
+            }
+            
+            nav.active ~ .language-switcher {
+                display: none;
+            }
+            
+            .mobile-lang-toggle {
+                display: block;
             }
         }
         
@@ -725,9 +779,6 @@
             
             .mobile-language-switcher {
                 display: flex;
-                justify-content: center;
-                gap: 10px;
-                margin-top: 1.5rem;
             }
         }
     </style>
@@ -743,7 +794,7 @@
                     <span class="logo-sub">CENTRE MÉDICAL</span>
                 </div>
             </div>
-            <div class="language-switcher">
+            <div class="language-switcher" id="languageSwitcher">
                 <button class="language-btn active" data-lang="fr">FR</button>
                 <button class="language-btn" data-lang="nl">NL</button>
                 <button class="language-btn" data-lang="en">EN</button>
@@ -868,7 +919,7 @@
                     </div>
                     <div class="contact-text">
                         <h3 class="translate" data-translate="address">Adresse</h3>
-                        <p>15 Rue de l'Émancipation<br>1020 Laeken, Bruxelles</p>
+                        <p><a href="https://maps.google.com/maps?q=Rue%20de%20l'%C3%89mancipation%2015,%20Laeken" target="_blank" style="color: var(--gray); text-decoration: none;">15 Rue de l'Émancipation<br>1020 Laeken, Bruxelles</a></p>
                         
                         <div class="transport-options">
                             <h4 class="translate" data-translate="access" style="margin-top: 1.5rem; margin-bottom: 0.8rem; color: var(--primary-dark);">Accès :</h4>
@@ -893,7 +944,7 @@
                     </div>
                     <div class="contact-text">
                         <h3 class="translate" data-translate="phone">Téléphone</h3>
-                        <p>02 203 40 35</p>
+                        <p><a href="tel:+3222034035" style="color: var(--gray); text-decoration: none;">02 203 40 35</a></p>
                     </div>
                 </div>
                 <div class="contact-item">
@@ -902,7 +953,7 @@
                     </div>
                     <div class="contact-text">
                         <h3 class="translate" data-translate="email">Email</h3>
-                        <p>info@medi-steyls.be</p>
+                        <p><a href="mailto:info@medi-steyls.be" style="color: var(--gray); text-decoration: none;">info@medi-steyls.be</a></p>
                     </div>
                 </div>
                 <div class="contact-item">
@@ -982,6 +1033,7 @@
             mainNav.classList.toggle('active');
             mobileMenuBtn.innerHTML = mainNav.classList.contains('active') ? 
                 '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
+            document.getElementById('languageSwitcher').style.display = 'none';
         });
         
         // Smooth Scrolling for Anchor Links
@@ -1202,7 +1254,21 @@
                 
                 // Update HTML lang attribute
                 document.documentElement.lang = lang;
+                
+                // Hide language switcher after selection on mobile
+                document.getElementById('languageSwitcher').style.display = 'none';
             });
+        });
+        
+        // Toggle language switcher on mobile
+        const langToggle = document.createElement('button');
+        langToggle.className = 'mobile-lang-toggle';
+        langToggle.innerHTML = '<i class="fas fa-globe"></i>';
+        document.body.appendChild(langToggle);
+        
+        langToggle.addEventListener('click', () => {
+            const languageSwitcher = document.getElementById('languageSwitcher');
+            languageSwitcher.style.display = languageSwitcher.style.display === 'flex' ? 'none' : 'flex';
         });
     </script>
 </body>
