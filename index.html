@@ -59,8 +59,9 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            max-width: 1200px;
+            max-width: 1400px;
             margin: 0 auto;
+            position: relative;
         }
         
         .logo {
@@ -69,6 +70,7 @@
             gap: 10px;
             cursor: pointer;
             transition: transform 0.3s ease;
+            flex-shrink: 0;
         }
         
         .logo:hover {
@@ -104,6 +106,7 @@
             display: flex;
             gap: 5px;
             margin-left: 1.5rem;
+            position: static;
         }
         
         .language-btn {
@@ -113,8 +116,9 @@
             padding: 5px 10px;
             border-radius: 4px;
             cursor: pointer;
-            font-size: 0.8rem;
+            font-size: 0.9rem;
             transition: all 0.3s ease;
+            min-width: 40px;
         }
         
         .language-btn:hover, .language-btn.active {
@@ -126,6 +130,9 @@
             display: flex;
             gap: 1.5rem;
             align-items: center;
+            flex-wrap: wrap;
+            justify-content: flex-end;
+            flex: 1;
         }
         
         nav a {
@@ -136,6 +143,7 @@
             transition: all 0.3s ease;
             position: relative;
             padding: 0.5rem 0;
+            white-space: nowrap;
         }
         
         nav a:hover {
@@ -164,6 +172,12 @@
             color: var(--white);
             font-size: 1.5rem;
             cursor: pointer;
+            margin-left: 15px;
+        }
+        
+        /* Mobile language switcher */
+        .mobile-language-container {
+            display: none;
         }
         
         /* Hero Slider */
@@ -258,7 +272,7 @@
         /* Sections */
         .section {
             padding: 6rem 2rem;
-            max-width: 1200px;
+            max-width: 1400px;
             margin: 0 auto;
         }
         
@@ -460,9 +474,15 @@
             font-size: 1.3rem;
         }
         
-        .contact-text p {
+        .contact-text p, .contact-text a {
             color: var(--gray);
             line-height: 1.7;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .contact-text a:hover {
+            color: var(--primary);
         }
         
         .transport-options {
@@ -509,7 +529,7 @@
         }
         
         .footer-container {
-            max-width: 1200px;
+            max-width: 1400px;
             margin: 0 auto;
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -608,6 +628,17 @@
         }
         
         /* Responsive */
+        @media (max-width: 1200px) {
+            .header-container {
+                max-width: 100%;
+                padding: 0 2rem;
+            }
+            
+            nav {
+                gap: 1rem;
+            }
+        }
+        
         @media (max-width: 992px) {
             .hero h1 {
                 font-size: 2.5rem;
@@ -615,6 +646,10 @@
             
             .section {
                 padding: 5rem 2rem;
+            }
+            
+            nav a {
+                font-size: 1rem;
             }
         }
         
@@ -627,10 +662,12 @@
                 height: calc(100vh - 70px);
                 background-color: var(--primary-dark);
                 flex-direction: column;
-                align-items: center;
-                padding: 3rem 0;
+                align-items: flex-start;
+                padding: 2rem;
                 transition: all 0.5s ease;
                 z-index: 999;
+                justify-content: flex-start;
+                gap: 1.5rem;
             }
             
             nav.active {
@@ -639,6 +676,22 @@
             
             .mobile-menu-btn {
                 display: block;
+                order: 1;
+            }
+            
+            .language-switcher {
+                display: none;
+            }
+            
+            .mobile-language-container {
+                display: block;
+                margin-top: 2rem;
+            }
+            
+            .mobile-language-container .language-switcher {
+                display: flex;
+                margin-left: 0;
+                justify-content: center;
             }
             
             .hero h1 {
@@ -679,13 +732,13 @@
             .logo-sub {
                 font-size: 0.7rem;
             }
-            
-            .language-switcher {
-                margin-left: 0.5rem;
-            }
         }
         
         @media (max-width: 576px) {
+            .header-container {
+                padding: 1rem;
+            }
+            
             .hero h1 {
                 font-size: 2rem;
             }
@@ -718,16 +771,20 @@
             .logo-sub {
                 font-size: 0.6rem;
             }
-            
-            .language-switcher {
-                display: none;
+        }
+        
+        /* Très grands écrans */
+        @media (min-width: 1600px) {
+            .header-container {
+                max-width: 1600px;
             }
             
-            .mobile-language-switcher {
-                display: flex;
-                justify-content: center;
-                gap: 10px;
-                margin-top: 1.5rem;
+            .section {
+                max-width: 1600px;
+            }
+            
+            nav {
+                gap: 2rem;
             }
         }
     </style>
@@ -743,17 +800,20 @@
                     <span class="logo-sub">CENTRE MÉDICAL</span>
                 </div>
             </div>
-            <div class="language-switcher">
-                <button class="language-btn active" data-lang="fr">FR</button>
-                <button class="language-btn" data-lang="nl">NL</button>
-                <button class="language-btn" data-lang="en">EN</button>
-            </div>
+            
             <nav id="mainNav">
                 <a href="#home" data-translate="home"><i class="fas fa-home"></i> <span class="translate">Accueil</span></a>
                 <a href="#services" data-translate="services"><i class="fas fa-stethoscope"></i> <span class="translate">Services</span></a>
                 <a href="#doctors" data-translate="team"><i class="fas fa-user-md"></i> <span class="translate">Équipe</span></a>
                 <a href="#contact" data-translate="contact"><i class="fas fa-map-marker-alt"></i> <span class="translate">Contact</span></a>
+                
+                <div class="language-switcher">
+                    <button class="language-btn active" data-lang="fr">FR</button>
+                    <button class="language-btn" data-lang="nl">NL</button>
+                    <button class="language-btn" data-lang="en">EN</button>
+                </div>
             </nav>
+            
             <button class="mobile-menu-btn" id="mobileMenuBtn">
                 <i class="fas fa-bars"></i>
             </button>
@@ -771,7 +831,7 @@
                         <h1 class="translate" data-translate="title1">Centre Médical Medi-Steyls</h1>
                         <p class="translate" data-translate="subtitle1">Votre santé, notre priorité. Des soins professionnels dans un environnement accueillant.</p>
                         <div class="btn-group">
-                            <a href="https://rosa.be/fr/booking/hp/theodore-ndzana/is-new-patient/?site=62441124b1eb746cfe26d82e" target="_blank" class="btn translate" data-translate="appointment" style="display: inline-block; margin-top: 1rem;">Prendre rendez-vous en ligne</a>
+                            <a href="https://rosa.be/fr/org/medi-steyls/" target="_blank" class="btn translate" data-translate="appointment">Prendre rendez-vous en ligne</a>
                         </div>
                     </div>
                 </div>
@@ -783,7 +843,7 @@
                         <h1 class="translate" data-translate="title2">Un accueil chaleureux</h1>
                         <p class="translate" data-translate="subtitle2">Notre équipe médicale vous accueille dans un cadre moderne et confortable.</p>
                         <div class="btn-group">
-                            <a href="https://rosa.be/fr/booking/hp/theodore-ndzana/is-new-patient/?site=62441124b1eb746cfe26d82e" target="_blank" class="btn translate" data-translate="appointment" style="display: inline-block; margin-top: 1rem;">Prendre rendez-vous en ligne</a>
+                            <a href="https://rosa.be/fr/org/medi-steyls/" target="_blank" class="btn translate" data-translate="appointment">Prendre rendez-vous en ligne</a>
                         </div>
                     </div>
                 </div>
@@ -868,7 +928,7 @@
                     </div>
                     <div class="contact-text">
                         <h3 class="translate" data-translate="address">Adresse</h3>
-                        <p>15 Rue de l'Émancipation<br>1020 Laeken, Bruxelles</p>
+                        <p><a href="https://maps.google.com/maps?q=Rue%20de%20l'%C3%89mancipation%2015,%20Laeken" target="_blank">15 Rue de l'Émancipation<br>1020 Laeken, Bruxelles</a></p>
                         
                         <div class="transport-options">
                             <h4 class="translate" data-translate="access" style="margin-top: 1.5rem; margin-bottom: 0.8rem; color: var(--primary-dark);">Accès :</h4>
@@ -893,7 +953,7 @@
                     </div>
                     <div class="contact-text">
                         <h3 class="translate" data-translate="phone">Téléphone</h3>
-                        <p>02 203 40 35</p>
+                        <p><a href="tel:+3222034035">02 203 40 35</a></p>
                     </div>
                 </div>
                 <div class="contact-item">
@@ -902,7 +962,7 @@
                     </div>
                     <div class="contact-text">
                         <h3 class="translate" data-translate="email">Email</h3>
-                        <p>info@medi-steyls.be</p>
+                        <p><a href="mailto:info@medi-steyls.be">info@medi-steyls.be</a></p>
                     </div>
                 </div>
                 <div class="contact-item">
@@ -929,11 +989,15 @@
             <div class="footer-col">
                 <h3>Medi-Steyls</h3>
                 <p class="translate" data-translate="footer_desc" style="color: rgba(255, 255, 255, 0.8); line-height: 1.7; margin-bottom: 1.5rem;">Centre médical offrant des soins de qualité à Laeken, Bruxelles. Votre santé est notre priorité absolue.</p>
-                <a href="https://rosa.be/fr/booking/hp/theodore-ndzana/is-new-patient/?site=62441124b1eb746cfe26d82e" target="_blank" class="btn translate" data-translate="appointment" style="display: inline-block; margin-top: 1rem;">Prendre rendez-vous en ligne</a>
-                <div class="mobile-language-switcher">
-                    <button class="language-btn active" data-lang="fr">FR</button>
-                    <button class="language-btn" data-lang="nl">NL</button>
-                    <button class="language-btn" data-lang="en">EN</button>
+                <a href="https://rosa.be/fr/org/medi-steyls/" target="_blank" class="btn translate" data-translate="appointment">Prendre rendez-vous en ligne</a>
+                
+                <div class="mobile-language-container">
+                    <h4 style="color: rgba(255,255,255,0.8); margin-top: 1.5rem; margin-bottom: 0.5rem;">Changer de langue:</h4>
+                    <div class="language-switcher">
+                        <button class="language-btn active" data-lang="fr">FR</button>
+                        <button class="language-btn" data-lang="nl">NL</button>
+                        <button class="language-btn" data-lang="en">EN</button>
+                    </div>
                 </div>
             </div>
             <div class="footer-col">
@@ -1093,7 +1157,7 @@
                 'email': 'Email',
                 'opening_hours': 'Horaires d\'ouverture',
                 'weekdays': 'Lundi - Vendredi : 8h30 - 18h',
-                'saturday': 'Samedi (prise de sang) : 9h - 13h',
+                'saturday': 'Samedi (prise de sang) : 8h - 10h',
                 'sunday': 'Dimanche & jours fériés : Service de garde Bruxellois au 1733 (7j/7)',
                 'footer_desc': 'Centre médical offrant des soins de qualité à Laeken, Bruxelles. Votre santé est notre priorité absolue.',
                 'quick_links': 'Accès rapide',
@@ -1180,28 +1244,40 @@
         };
 
         // Language switcher functionality
-        const languageBtns = document.querySelectorAll('.language-btn');
+        function updateLanguage(lang) {
+            // Update all translatable elements
+            document.querySelectorAll('.translate').forEach(element => {
+                const key = element.getAttribute('data-translate');
+                if (translations[lang] && translations[lang][key]) {
+                    element.textContent = translations[lang][key];
+                }
+            });
+            
+            // Update HTML lang attribute
+            document.documentElement.lang = lang;
+            
+            // Update active button
+            document.querySelectorAll('.language-btn').forEach(btn => {
+                btn.classList.remove('active');
+                if (btn.getAttribute('data-lang') === lang) {
+                    btn.classList.add('active');
+                }
+            });
+            
+            // Save language preference
+            localStorage.setItem('preferredLanguage', lang);
+        }
+
+        // Initialize language
+        const preferredLanguage = localStorage.getItem('preferredLanguage') || 'fr';
+        updateLanguage(preferredLanguage);
         
-        languageBtns.forEach(btn => {
-            btn.addEventListener('click', () => {
-                // Remove active class from all buttons
-                languageBtns.forEach(b => b.classList.remove('active'));
-                // Add active class to clicked button
-                btn.classList.add('active');
-                
-                // Get selected language
+        // Language button click handlers
+        document.querySelectorAll('.language-btn').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                e.stopPropagation();
                 const lang = btn.getAttribute('data-lang');
-                
-                // Update all translatable elements
-                document.querySelectorAll('.translate').forEach(element => {
-                    const key = element.getAttribute('data-translate');
-                    if (translations[lang] && translations[lang][key]) {
-                        element.textContent = translations[lang][key];
-                    }
-                });
-                
-                // Update HTML lang attribute
-                document.documentElement.lang = lang;
+                updateLanguage(lang);
             });
         });
     </script>
