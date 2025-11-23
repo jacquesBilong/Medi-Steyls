@@ -6,32 +6,41 @@
     <meta name="description" content="Centre médical Medi-Steyls à Laeken. Soins professionnels, rendez-vous en ligne, pédiatrie, médecins expérimentés.">
     <meta name="keywords" content="médecin Laeken, centre médical Bruxelles, rendez-vous médecin, Medi-Steyls, pédiatrie, soins médicaux">
     <meta name="author" content="Centre Médical Medi-Steyls">
+
+    <!-- Open Graph -->
     <meta property="og:type" content="website">
     <meta property="og:title" content="Centre Médical Medi-Steyls - Laeken">
     <meta property="og:description" content="Centre médical à Laeken. Médecins généralistes, pédiatrie, soins de qualité, prise de rendez-vous en ligne.">
     <meta property="og:url" content="https://www.medi-steyls.be/">
-    <meta property="og:image" content="https://www.medi-steyls.be/logo.png">
+    <meta property="og:image" content="https://www.medi-steyls.be/foto/logo.png">
 
+    <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Centre Médical Medi-Steyls - Laeken">
     <meta name="twitter:description" content="Votre santé, notre priorité.">
-    <meta name="twitter:image" content="https://www.medi-steyls.be/logo.png">
+    <meta name="twitter:image" content="https://www.medi-steyls.be/foto/logo.png">
 
+    <!-- Canonical & Favicon -->
+    <link rel="canonical" href="https://www.medi-steyls.be/">
+    <link rel="icon" type="image/png" href="foto/logo.png">
 
     <title>Centre Médical Medi-Steyls - Soins professionnels</title>
+
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
     <!-- Splide JS for image slider -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css">
-    <link rel="canonical" href="https://www.medi-steyls.be/">
-    <link rel="icon" type="image/png" href="logo.png">
 
     <style>
         :root {
-            --primary: #2a7fba;
-            --primary-dark: #1a5a8a;
+            /* Palette médicale */
+            --medical-blue: #1a5f9e;
+            --medical-dark: #0d3b66;
+
+            --primary: var(--medical-blue);
+            --primary-dark: var(--medical-dark);
             --secondary: #e8f4fc;
             --accent: #ff7e7e;
             --text: #2d3748;
@@ -46,11 +55,15 @@
             box-sizing: border-box;
         }
         
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
             font-family: 'Poppins', sans-serif;
             line-height: 1.6;
             color: var(--text);
-            background-color: var(--white);
+            background: radial-gradient(circle at top, #f3f8ff 0%, #ffffff 40%, #f5f7fb 100%);
             overflow-x: hidden;
         }
         
@@ -62,14 +75,14 @@
         
         /* Header */
         header {
-            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            background: linear-gradient(135deg, var(--primary-dark), var(--primary));
             color: var(--white);
-            padding: 1rem 2rem;
+            padding: 0.8rem 2rem;
             position: fixed;
             width: 100%;
             top: 0;
             z-index: 1000;
-            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 4px 18px rgba(0, 0, 0, 0.18);
             transition: all 0.3s ease;
         }
         
@@ -85,19 +98,27 @@
         .logo {
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 12px;
             cursor: pointer;
-            transition: transform 0.3s ease;
+            transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
             flex-shrink: 0;
+            padding: 6px 14px;
+            border-radius: 999px;
+            background: rgba(255, 255, 255, 0.06);
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.18);
         }
         
+        .logo img {
+            height: 65px;
+            width: auto;
+            display: block;
+            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.35));
+        }
+
         .logo:hover {
-            transform: scale(1.03);
-        }
-        
-        .logo i {
-            font-size: 2rem;
-            color: var(--white);
+            transform: translateY(-2px) scale(1.02);
+            background: rgba(255, 255, 255, 0.1);
+            box-shadow: 0 10px 24px rgba(0, 0, 0, 0.25);
         }
         
         .logo-text {
@@ -128,19 +149,26 @@
         }
         
         .language-btn {
-            background: rgba(255, 255, 255, 0.1);
-            border: none;
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255,255,255,0.25);
             color: var(--white);
             padding: 5px 10px;
-            border-radius: 4px;
+            border-radius: 999px;
             cursor: pointer;
             font-size: 0.9rem;
             transition: all 0.3s ease;
             min-width: 40px;
+            backdrop-filter: blur(4px);
         }
         
-        .language-btn:hover, .language-btn.active {
+        .language-btn:hover {
+            background: rgba(255,255,255,0.2);
+        }
+
+        .language-btn.active {
             background: var(--accent);
+            border-color: var(--accent);
+            color: #fff;
         }
         
         /* Navigation */
@@ -157,30 +185,58 @@
             color: var(--white);
             text-decoration: none;
             font-weight: 500;
-            font-size: 1.1rem;
+            font-size: 1.05rem;
             transition: all 0.3s ease;
             position: relative;
-            padding: 0.5rem 0;
+            padding: 0.4rem 0;
             white-space: nowrap;
+            display: flex;
+            align-items: center;
+            gap: 6px;
         }
         
-        nav a:hover {
-            color: var(--accent);
+        nav a i {
+            font-size: 0.95rem;
+            opacity: 0.9;
         }
-        
+
+        nav a::before {
+            content: '';
+            position: absolute;
+            left: -12px;
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: var(--accent);
+            opacity: 0;
+            transform: scale(0.5);
+            transition: all 0.25s ease;
+        }
+
         nav a::after {
             content: '';
             position: absolute;
-            bottom: 0;
+            bottom: -4px;
             left: 0;
             width: 0;
             height: 2px;
-            background-color: var(--accent);
-            transition: width 0.3s ease;
+            background: linear-gradient(90deg, var(--accent), #ffd2b3);
+            transition: width 0.25s ease;
+            border-radius: 999px;
+        }
+        
+        nav a:hover {
+            color: #ffe7e7;
+            transform: translateY(-1px);
         }
         
         nav a:hover::after {
             width: 100%;
+        }
+
+        nav a:hover::before {
+            opacity: 1;
+            transform: scale(1);
         }
         
         .mobile-menu-btn {
@@ -188,7 +244,7 @@
             background: none;
             border: none;
             color: var(--white);
-            font-size: 1.5rem;
+            font-size: 1.7rem;
             cursor: pointer;
             margin-left: 15px;
         }
@@ -201,12 +257,12 @@
         /* Hero Slider */
         .hero-slider {
             height: 100vh;
-            margin-top: 70px;
+            margin-top: 80px;
         }
         
         .splide__slide {
             position: relative;
-            height: 100vh;
+            height: calc(100vh - 80px);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -221,7 +277,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.5);
+            background: linear-gradient(135deg, rgba(13,59,102,0.7), rgba(26,95,158,0.55));
         }
         
         .slide-img {
@@ -232,6 +288,7 @@
             height: 100%;
             object-fit: cover;
             z-index: -1;
+            filter: brightness(0.9);
         }
         
         .hero-content {
@@ -241,14 +298,15 @@
             color: var(--white);
         }
         
-        .hero h1 {
+        .hero-content h1,
+        .hero-content h2 {
             font-size: 3.5rem;
             margin-bottom: 1.5rem;
             text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.6);
             line-height: 1.2;
         }
         
-        .hero p {
+        .hero-content p {
             font-size: 1.3rem;
             margin-bottom: 2.5rem;
             text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
@@ -259,7 +317,7 @@
         .btn {
             display: inline-block;
             padding: 16px 36px;
-            background-color: var(--accent);
+            background: linear-gradient(135deg, var(--accent), #ffb38a);
             color: var(--white);
             border: none;
             border-radius: 50px;
@@ -272,9 +330,10 @@
         }
         
         .btn:hover {
-            background-color: var(--primary);
+            background: #ffffff;
+            color: var(--primary-dark);
             transform: translateY(-3px);
-            box-shadow: 0 6px 20px rgba(255, 126, 126, 0.5);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
         }
         
         .btn-secondary {
@@ -293,6 +352,17 @@
             padding: 5rem 2rem;
             max-width: 1400px;
             margin: 0 auto;
+            position: relative;
+        }
+
+        .section::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: 28px;
+            background: radial-gradient(circle at top left, rgba(26,95,158,0.03), transparent 50%),
+                        radial-gradient(circle at bottom right, rgba(13,59,102,0.04), transparent 55%);
+            z-index: -1;
         }
         
         .section-title {
@@ -303,8 +373,9 @@
         
         .section-title h2 {
             font-size: 2.8rem;
-            color: var(--primary);
+            color: var(--primary-dark);
             display: inline-block;
+            position: relative;
         }
         
         .section-title h2::after {
@@ -315,8 +386,8 @@
             transform: translateX(-50%);
             width: 80px;
             height: 4px;
-            background-color: var(--accent);
-            border-radius: 2px;
+            background: linear-gradient(90deg, var(--accent), #ffd2b3);
+            border-radius: 999px;
         }
         
         /* Services */
@@ -328,10 +399,10 @@
         
         .service-card {
             background: var(--white);
-            border-radius: 12px;
+            border-radius: 18px;
             padding: 2.5rem 2rem;
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
-            transition: all 0.4s ease;
+            box-shadow: 0 10px 28px rgba(0, 0, 0, 0.06);
+            transition: all 0.35s ease;
             text-align: center;
             position: relative;
             overflow: hidden;
@@ -342,35 +413,51 @@
             justify-content: space-between;
         }
         
-        .service-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.12);
-        }
-        
         .service-card::before {
             content: '';
             position: absolute;
+            inset: 0;
+            background: radial-gradient(circle at top, rgba(26,95,158,0.09), transparent 55%);
+            opacity: 0;
+            transition: opacity 0.35s ease;
+            z-index: -1;
+        }
+
+        .service-card::after {
+            content: '';
+            position: absolute;
             top: 0;
-            left: 0;
-            width: 100%;
-            height: 5px;
-            background-color: var(--accent);
-            transition: all 0.3s ease;
+            left: 20%;
+            width: 60%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--accent), #ffd2b3);
+            border-radius: 0 0 999px 999px;
+            transition: all 0.35s ease;
         }
         
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 18px 40px rgba(0, 0, 0, 0.14);
+        }
+
         .service-card:hover::before {
-            height: 8px;
+            opacity: 1;
+        }
+
+        .service-card:hover::after {
+            height: 7px;
+            top: 0;
         }
         
         .service-icon {
-            font-size: 3.5rem;
+            font-size: 3.4rem;
             color: var(--primary);
             margin-bottom: 1.5rem;
             transition: all 0.3s ease;
         }
         
         .service-card:hover .service-icon {
-            transform: scale(1.1);
+            transform: translateY(-4px) scale(1.06);
             color: var(--accent);
         }
         
@@ -395,19 +482,34 @@
         
         .doctor-card {
             background: var(--white);
-            border-radius: 12px;
+            border-radius: 18px;
             overflow: hidden;
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
-            transition: all 0.4s ease;
+            box-shadow: 0 10px 28px rgba(0, 0, 0, 0.08);
+            transition: all 0.35s ease;
             text-align: center;
             height: 100%;
             display: flex;
             flex-direction: column;
+            position: relative;
         }
         
+        .doctor-card::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, rgba(26,95,158,0.10), transparent 35%, transparent 100%);
+            opacity: 0;
+            transition: opacity 0.35s ease;
+            z-index: 1;
+        }
+
         .doctor-card:hover {
             transform: translateY(-10px);
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.12);
+            box-shadow: 0 18px 40px rgba(0, 0, 0, 0.16);
+        }
+
+        .doctor-card:hover::before {
+            opacity: 1;
         }
         
         .doctor-img-container {
@@ -428,11 +530,14 @@
         }
         
         .doctor-info {
-            padding: 2rem 1.5rem;
+            padding: 2rem 1.5rem 2.3rem;
             flex-grow: 1;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
+            position: relative;
+            z-index: 2;
+            background: linear-gradient(180deg, #ffffff 0%, #f7fbff 100%);
         }
         
         .doctor-info h3 {
@@ -446,13 +551,13 @@
             font-weight: 600;
             margin-bottom: 1.2rem;
             display: block;
-            font-size: 1.15rem;
+            font-size: 1.1rem;
         }
         
         .doctor-info p {
             color: var(--gray);
             margin-bottom: 1.5rem;
-            font-size: 1rem;
+            font-size: 0.98rem;
             line-height: 1.7;
             flex-grow: 1;
         }
@@ -469,10 +574,10 @@
             font-size: 1rem;
         }
         
-        .doctor-link:hover {
-            background-color: var(--accent);
-            transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(42, 127, 186, 0.3);
+        .doctor-card:hover .doctor-link {
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(26, 95, 158, 0.35);
         }
         
         /* Contact */
@@ -499,6 +604,7 @@
             color: var(--accent);
             margin-top: 5px;
             flex-shrink: 0;
+            text-shadow: 0 2px 6px rgba(0,0,0,0.18);
         }
         
         .contact-text h3 {
@@ -511,12 +617,13 @@
             color: var(--gray);
             line-height: 1.7;
             text-decoration: none;
-            transition: color 0.3s ease;
+            transition: color 0.3s ease, transform 0.2s ease;
             font-size: 1.05rem;
         }
         
         .contact-text a:hover {
             color: var(--primary);
+            transform: translateX(2px);
         }
         
         .transport-options {
@@ -538,15 +645,17 @@
         }
         
         .map-container {
-            border-radius: 12px;
+            border-radius: 18px;
             overflow: hidden;
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.16);
             height: 100%;
             transition: all 0.3s ease;
+            border: 3px solid rgba(13,59,102,0.1);
         }
         
         .map-container:hover {
-            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+            box-shadow: 0 16px 40px rgba(0, 0, 0, 0.22);
+            transform: translateY(-3px);
         }
         
         .map-container iframe {
@@ -558,9 +667,10 @@
         
         /* Footer */
         footer {
-            background: linear-gradient(135deg, var(--primary-dark), #14436b);
+            background: radial-gradient(circle at top, #1f7ab6 0%, var(--primary-dark) 50%, #06172a 100%);
             color: var(--white);
             padding: 4rem 2rem 2rem;
+            margin-top: 3rem;
         }
         
         .footer-container {
@@ -583,10 +693,10 @@
             position: absolute;
             bottom: -10px;
             left: 0;
-            width: 50px;
+            width: 60px;
             height: 3px;
-            background-color: var(--accent);
-            border-radius: 2px;
+            background: linear-gradient(90deg, var(--accent), #ffd2b3);
+            border-radius: 999px;
         }
         
         .footer-links {
@@ -619,8 +729,8 @@
             text-align: center;
             margin-top: 4rem;
             padding-top: 2.5rem;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            color: rgba(255, 255, 255, 0.7);
+            border-top: 1px solid rgba(255, 255, 255, 0.18);
+            color: rgba(255, 255, 255, 0.8);
             font-size: 0.95rem;
         }
         
@@ -656,6 +766,33 @@
             transform: translateY(-5px);
         }
         
+        /* Neige */
+        .snowflake {
+            position: fixed;
+            top: -10px;
+            color: #ffffff;
+            font-size: 0.8rem;
+            pointer-events: none;
+            user-select: none;
+            z-index: 9999;
+            text-shadow: 0 0 6px rgba(255,255,255,0.9);
+            opacity: 0.95;
+        }
+
+        @keyframes snow-fall {
+            0% {
+                transform: translate3d(0, -10px, 0);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            100% {
+                transform: translate3d(var(--x-move, 20px), 110vh, 0);
+                opacity: 0;
+            }
+        }
+        
         /* Animations */
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(30px); }
@@ -675,7 +812,8 @@
         }
         
         @media (max-width: 992px) {
-            .hero h1 {
+            .hero-content h1,
+            .hero-content h2 {
                 font-size: 3rem;
             }
             
@@ -695,18 +833,19 @@
         @media (max-width: 768px) {
             nav {
                 position: fixed;
-                top: 70px;
+                top: 80px;
                 left: -100%;
                 width: 80%;
-                height: calc(100vh - 70px);
-                background-color: var(--primary-dark);
+                height: calc(100vh - 80px);
+                background: linear-gradient(160deg, var(--primary-dark), #06172a);
                 flex-direction: column;
                 align-items: flex-start;
                 padding: 2rem;
                 transition: all 0.5s ease;
-                z-index: 999;
+                z-index: 998;
                 justify-content: flex-start;
                 gap: 1.5rem;
+                box-shadow: 4px 0 20px rgba(0,0,0,0.35);
             }
             
             nav.active {
@@ -733,11 +872,12 @@
                 justify-content: center;
             }
             
-            .hero h1 {
+            .hero-content h1,
+            .hero-content h2 {
                 font-size: 2.5rem;
             }
             
-            .hero p {
+            .hero-content p {
                 font-size: 1.2rem;
             }
             
@@ -771,18 +911,27 @@
             .logo-sub {
                 font-size: 0.7rem;
             }
+
+            .logo {
+                padding: 5px 10px;
+            }
+
+            .logo img {
+                height: 56px;
+            }
         }
         
         @media (max-width: 576px) {
             .header-container {
-                padding: 1rem;
+                padding: 0.8rem 1rem;
             }
             
-            .hero h1 {
+            .hero-content h1,
+            .hero-content h2 {
                 font-size: 2.2rem;
             }
             
-            .hero p {
+            .hero-content p {
                 font-size: 1.1rem;
             }
             
@@ -832,13 +981,13 @@
             }
         }
     </style>
+
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-4LEP20D1E4"></script>
     <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
-
     gtag('config', 'G-4LEP20D1E4');
     </script>
     
@@ -848,7 +997,7 @@
     <header>
         <div class="header-container">
             <div class="logo" onclick="window.location.href='#home'">
-                <img src="logo.png" alt="Centre Médical Medi-Steyls" style="height:48px;">
+                <img src="logo.png" alt="Centre Médical Medi-Steyls">
                 <div class="logo-text">
                     <span class="logo-main">Medi-Steyls</span>
                     <span class="logo-sub">CENTRE MÉDICAL</span>
@@ -878,7 +1027,7 @@
     <section class="hero-slider splide" id="home">
         <div class="splide__track">
             <div class="splide__list">
-                <!-- Slide 1 avec photo locale -->
+                <!-- Slide 1 -->
                 <div class="splide__slide">
                     <img src="2.jpg" alt="Centre Médical Medi-Steyls" class="slide-img">
                     <div class="hero-content">
@@ -890,11 +1039,11 @@
                     </div>
                 </div>
                 
-                <!-- Slide 2 avec photo locale -->
+                <!-- Slide 2 -->
                 <div class="splide__slide">
                     <img src="1.jpg" alt="Salle d'attente" class="slide-img">
                     <div class="hero-content">
-                        <h1 class="translate" data-translate="title2">Un accueil chaleureux</h1>
+                        <h2 class="translate" data-translate="title2">Un accueil chaleureux</h2>
                         <p class="translate" data-translate="subtitle2">Notre équipe médicale vous accueille dans un cadre moderne et confortable.</p>
                         <div class="btn-group">
                             <a href="https://rosa.be/fr/org/medi-steyls/" target="_blank" class="btn translate" data-translate="appointment">Prendre rendez-vous en ligne</a>
@@ -936,15 +1085,15 @@
     </section>
 
     <!-- Doctors Section -->
-    <section class="section" id="doctors" style="background-color: var(--light);">
+    <section class="section" id="doctors" style="background-color: transparent;">
         <div class="section-title">
             <h2 class="translate" data-translate="our_team">Notre Équipe Médicale</h2>
         </div>
         <div class="doctors-container">
-            <!-- Docteur 1 avec photo locale -->
+            <!-- Docteur 1 -->
             <div class="doctor-card">
                 <div class="doctor-img-container">
-                    <img src="ndzana.jpg" alt="Dr. Théodore NDZANA" class="doctor-img">
+                    <img src="foto/ndzana.jpg" alt="Dr. Théodore NDZANA" class="doctor-img">
                 </div>
                 <div class="doctor-info">
                     <h3>Dr. Théodore NDZANA</h3>
@@ -954,10 +1103,10 @@
                 </div>
             </div>
             
-            <!-- Docteur 2 avec photo locale -->
+            <!-- Docteur 2 -->
             <div class="doctor-card">
                 <div class="doctor-img-container">
-                    <img src="Josue.jpg" alt="Dr. Josué Saurel Kagmeni Tchokote" class="doctor-img">
+                    <img src="foto/Josue.jpg" alt="Dr. Josué Saurel Kagmeni Tchokote" class="doctor-img">
                 </div>
                 <div class="doctor-info">
                     <h3>Dr. Josué Saurel Kagmeni Tchokote</h3>
@@ -967,10 +1116,10 @@
                 </div>
             </div>
             
-            <!-- Docteur 3 avec photo locale - Dr. Eric Bikoula -->
+            <!-- Docteur 3 -->
             <div class="doctor-card">
                 <div class="doctor-img-container">
-                    <img src="eric-bikoula.jpg" alt="Dr. Eric Bikoula" class="doctor-img">
+                    <img src="foto/eric-bikoula.jpg" alt="Dr. Eric Bikoula" class="doctor-img">
                 </div>
                 <div class="doctor-info">
                     <h3>Dr. Eric Bikoula</h3>
@@ -980,10 +1129,10 @@
                 </div>
             </div>
             
-            <!-- Docteur 4 avec photo locale - Dr. Stanislas Pepin Ntungila Nkama -->
+            <!-- Docteur 4 -->
             <div class="doctor-card">
                 <div class="doctor-img-container">
-                    <img src="stanislas-pepin.jpg" alt="Dr. Stanislas Pepin Ntungila Nkama" class="doctor-img">
+                    <img src="foto/stanislas-pepin.jpg" alt="Dr. Stanislas Pepin Ntungila Nkama" class="doctor-img">
                 </div>
                 <div class="doctor-info">
                     <h3>Dr. Stanislas Pepin Ntungila Nkama</h3>
@@ -1068,11 +1217,11 @@
         <div class="footer-container">
             <div class="footer-col">
                 <h3>Medi-Steyls</h3>
-                <p class="translate" data-translate="footer_desc" style="color: rgba(255, 255, 255, 0.8); line-height: 1.7; margin-bottom: 1.5rem;">Centre médical offrant des soins de qualité à Laeken, Bruxelles. Votre santé est notre priorité absolue.</p>
+                <p class="translate" data-translate="footer_desc" style="color: rgba(255, 255, 255, 0.85); line-height: 1.7; margin-bottom: 1.5rem;">Centre médical offrant des soins de qualité à Laeken, Bruxelles. Votre santé est notre priorité absolue.</p>
                 <a href="https://rosa.be/fr/org/medi-steyls/" target="_blank" class="btn translate" data-translate="appointment">Prendre rendez-vous en ligne</a>
                 
                 <div class="mobile-language-container">
-                    <h4 style="color: rgba(255,255,255,0.8); margin-top: 1.5rem; margin-bottom: 0.5rem;">Changer de langue:</h4>
+                    <h4 style="color: rgba(255,255,255,0.8); margin-top: 1.5rem; margin-bottom: 0.5rem;">Changer de langue :</h4>
                     <div class="language-switcher">
                         <button class="language-btn active" data-lang="fr">FR</button>
                         <button class="language-btn" data-lang="nl">NL</button>
@@ -1099,7 +1248,6 @@
     <div class="back-to-top" id="backToTop" aria-label="Retour en haut de la page">
         <i class="fas fa-arrow-up"></i>
     </div>
-
 
     <!-- Splide JS -->
     <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js"></script>
@@ -1132,14 +1280,13 @@
         // Smooth Scrolling for Anchor Links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function(e) {
-                e.preventDefault();
-                
                 if (this.getAttribute('href') === '#') return;
+                e.preventDefault();
                 
                 const target = document.querySelector(this.getAttribute('href'));
                 if (target) {
                     window.scrollTo({
-                        top: target.offsetTop - 70,
+                        top: target.offsetTop - 80,
                         behavior: 'smooth'
                     });
                     
@@ -1170,7 +1317,7 @@
             });
         });
         
-        // Make logo clickable
+        // Make logo clickable (scroll to top)
         document.querySelector('.logo').addEventListener('click', () => {
             window.scrollTo({
                 top: 0,
@@ -1332,7 +1479,6 @@
 
         // Language switcher functionality
         function updateLanguage(lang) {
-            // Update all translatable elements
             document.querySelectorAll('.translate').forEach(element => {
                 const key = element.getAttribute('data-translate');
                 if (translations[lang] && translations[lang][key]) {
@@ -1340,10 +1486,8 @@
                 }
             });
             
-            // Update HTML lang attribute
             document.documentElement.lang = lang;
             
-            // Update active button
             document.querySelectorAll('.language-btn').forEach(btn => {
                 btn.classList.remove('active');
                 if (btn.getAttribute('data-lang') === lang) {
@@ -1351,21 +1495,51 @@
                 }
             });
             
-            // Save language preference
             localStorage.setItem('preferredLanguage', lang);
         }
 
-        // Initialize language
         const preferredLanguage = localStorage.getItem('preferredLanguage') || 'fr';
         updateLanguage(preferredLanguage);
         
-        // Language button click handlers
         document.querySelectorAll('.language-btn').forEach(btn => {
             btn.addEventListener('click', (e) => {
                 e.stopPropagation();
                 const lang = btn.getAttribute('data-lang');
                 updateLanguage(lang);
             });
+        });
+
+        // Effet de neige
+        function createSnowflake() {
+            const snowflake = document.createElement('div');
+            snowflake.className = 'snowflake';
+            snowflake.textContent = '❄';
+
+            const startLeft = Math.random() * window.innerWidth;
+            const duration = 8 + Math.random() * 7; // 8 à 15s
+            const size = 8 + Math.random() * 10;   // px
+            const drift = (Math.random() - 0.5) * 80; // mouvement horizontal
+
+            snowflake.style.left = startLeft + 'px';
+            snowflake.style.fontSize = size + 'px';
+            snowflake.style.animation = `snow-fall ${duration}s linear forwards`;
+            snowflake.style.setProperty('--x-move', drift + 'px');
+
+            document.body.appendChild(snowflake);
+
+            setTimeout(() => {
+                snowflake.remove();
+            }, duration * 1000);
+        }
+
+        // Lancer la neige au chargement
+        window.addEventListener('load', () => {
+            // beaucoup au début
+            for (let i = 0; i < 40; i++) {
+                setTimeout(createSnowflake, i * 150);
+            }
+            // puis un flux régulier
+            setInterval(createSnowflake, 600);
         });
     </script>
 </body>
