@@ -12,17 +12,36 @@
     <meta property="og:title" content="Centre Médical Medi-Steyls - Laeken">
     <meta property="og:description" content="Centre médical à Laeken. Médecins généralistes, pédiatrie, soins de qualité, prise de rendez-vous en ligne.">
     <meta property="og:url" content="https://www.medi-steyls.be/">
-    <meta property="og:image" content="https://www.medi-steyls.be/logo.png">
+    <meta property="og:image" content="https://www.medi-steyls.be/foto/logo.png">
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Centre Médical Medi-Steyls - Laeken">
     <meta name="twitter:description" content="Votre santé, notre priorité.">
-    <meta name="twitter:image" content="https://www.medi-steyls.be/logo.png">
+    <meta name="twitter:image" content="https://www.medi-steyls.be/foto/logo.png">
 
     <!-- Canonical & Favicon -->
     <link rel="canonical" href="https://www.medi-steyls.be/">
-    <link rel="icon" type="image/png" href="logo.png">
+    <link rel="icon" type="image/png" href="foto/logo.png">
+
+    <!-- Schema.org -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "MedicalOrganization",
+      "name": "Centre Médical Medi-Steyls",
+      "url": "https://www.medi-steyls.be/",
+      "logo": "https://www.medi-steyls.be/foto/logo.png",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Rue de l'Émancipation 15",
+        "postalCode": "1020",
+        "addressLocality": "Laeken",
+        "addressCountry": "BE"
+      },
+      "telephone": "+32 2 203 40 35"
+    }
+    </script>
 
     <title>Centre Médical Medi-Steyls - Soins professionnels</title>
 
@@ -77,7 +96,7 @@
         header {
             background: linear-gradient(135deg, var(--primary-dark), var(--primary));
             color: var(--white);
-            padding: 0.8rem 2rem;
+            padding: 0.7rem 2rem;
             position: fixed;
             width: 100%;
             top: 0;
@@ -98,27 +117,25 @@
         .logo {
             display: flex;
             align-items: center;
-            justify-content: center;
             cursor: pointer;
             flex-shrink: 0;
-            padding: 6px 26px;
-            border-radius: 999px;
-            background: rgba(0, 0, 0, 0.12);
-            box-shadow: 0 8px 22px rgba(0, 0, 0, 0.28);
-            transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+            padding: 0;
+            margin-right: 1.5rem;
         }
         
         .logo img {
-            height: 70px;           /* ajuste ici si tu veux plus grand/petit */
+            height: 80px;       /* logo bien lisible */
             width: auto;
             display: block;
-            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.45));
+            filter: drop-shadow(0 2px 6px rgba(0,0,0,0.55));
         }
 
-        .logo:hover {
-            transform: translateY(-2px) scale(1.03);
-            background: rgba(0, 0, 0, 0.18);
-            box-shadow: 0 14px 32px rgba(0, 0, 0, 0.35);
+        .logo:hover img {
+            transform: scale(1.03);
+        }
+
+        .logo img {
+            transition: transform 0.25s ease;
         }
         
         /* Language Switcher */
@@ -251,7 +268,7 @@
             padding: 0 2rem;
         }
         
-        /* >>> ICI : plus d’overlay bleu, image nette <<< */
+        /* Image nette, pas de voile */
         .splide__slide::before {
             content: '';
             position: absolute;
@@ -270,7 +287,7 @@
             height: 100%;
             object-fit: cover;
             z-index: -1;
-            filter: none;  /* pas de flou, pas de foncé */
+            filter: none;
         }
         
         .hero-content {
@@ -318,17 +335,6 @@
             color: var(--primary-dark);
             transform: translateY(-3px);
             box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
-        }
-        
-        .btn-secondary {
-            background-color: transparent;
-            border: 2px solid var(--white);
-            margin-left: 15px;
-        }
-        
-        .btn-secondary:hover {
-            background-color: var(--white);
-            color: var(--primary);
         }
         
         /* Sections */
@@ -865,13 +871,6 @@
                 font-size: 1.2rem;
             }
             
-            .btn-group {
-                display: flex;
-                flex-direction: column;
-                gap: 1.2rem;
-                align-items: center;
-            }
-            
             .btn-secondary {
                 margin-left: 0;
             }
@@ -888,18 +887,14 @@
                 min-height: 350px;
             }
             
-            .logo {
-                padding: 5px 18px;
-            }
-
             .logo img {
-                height: 60px;
+                height: 64px;
             }
         }
         
         @media (max-width: 576px) {
             .header-container {
-                padding: 0.8rem 1rem;
+                padding: 0.7rem 1rem;
             }
             
             .hero-content h1,
@@ -965,8 +960,7 @@
     <header>
         <div class="header-container">
             <div class="logo" onclick="window.location.href='#home'">
-                <!-- TON PNG LOGO TRANSPARENT -->
-                <img src="logo1.png" alt="Centre Médical Medi-Steyls - Logo">
+                <img src="logo.png" alt="Centre Médical Medi-Steyls - Logo">
             </div>
 
             <nav id="mainNav">
@@ -1004,9 +998,8 @@
     <section class="hero-slider splide" id="home">
         <div class="splide__track">
             <div class="splide__list">
-                <!-- Slide 1 -->
                 <div class="splide__slide">
-                    <img src="2.jpg" alt="Centre Médical Medi-Steyls" class="slide-img">
+                    <img src="foto/2.jpg" alt="Centre Médical Medi-Steyls" class="slide-img">
                     <div class="hero-content">
                         <h1 class="translate" data-translate="title1">Centre Médical Medi-Steyls</h1>
                         <p class="translate" data-translate="subtitle1">Votre santé, notre priorité. Des soins professionnels dans un environnement accueillant.</p>
@@ -1016,9 +1009,8 @@
                     </div>
                 </div>
                 
-                <!-- Slide 2 -->
                 <div class="splide__slide">
-                    <img src="1.jpg" alt="Salle d'attente" class="slide-img">
+                    <img src="foto/1.jpg" alt="Salle d'attente" class="slide-img">
                     <div class="hero-content">
                         <h2 class="translate" data-translate="title2">Un accueil chaleureux</h2>
                         <p class="translate" data-translate="subtitle2">Notre équipe médicale vous accueille dans un cadre moderne et confortable.</p>
@@ -1031,7 +1023,7 @@
         </div>
     </section>
 
-    <!-- Services Section -->
+    <!-- Services -->
     <section class="section" id="services">
         <div class="section-title">
             <h2 class="translate" data-translate="our_services">Nos Services</h2>
@@ -1061,13 +1053,12 @@
         </div>
     </section>
 
-    <!-- Doctors Section -->
+    <!-- Doctors -->
     <section class="section" id="doctors" style="background-color: transparent;">
         <div class="section-title">
             <h2 class="translate" data-translate="our_team">Notre Équipe Médicale</h2>
         </div>
         <div class="doctors-container">
-            <!-- Docteur 1 -->
             <div class="doctor-card">
                 <div class="doctor-img-container">
                     <img src="foto/ndzana.jpg" alt="Dr. Théodore NDZANA" class="doctor-img">
@@ -1080,7 +1071,6 @@
                 </div>
             </div>
             
-            <!-- Docteur 2 -->
             <div class="doctor-card">
                 <div class="doctor-img-container">
                     <img src="foto/Josue.jpg" alt="Dr. Josué Saurel Kagmeni Tchokote" class="doctor-img">
@@ -1093,7 +1083,6 @@
                 </div>
             </div>
             
-            <!-- Docteur 3 -->
             <div class="doctor-card">
                 <div class="doctor-img-container">
                     <img src="foto/eric-bikoula.jpg" alt="Dr. Eric Bikoula" class="doctor-img">
@@ -1106,7 +1095,6 @@
                 </div>
             </div>
             
-            <!-- Docteur 4 -->
             <div class="doctor-card">
                 <div class="doctor-img-container">
                     <img src="foto/stanislas-pepin.jpg" alt="Dr. Stanislas Pepin Ntungila Nkama" class="doctor-img">
@@ -1121,7 +1109,7 @@
         </div>
     </section>
 
-    <!-- Contact Section -->
+    <!-- Contact -->
     <section class="section" id="contact">
         <div class="section-title">
             <h2 class="translate" data-translate="contact_us">Nous contacter</h2>
@@ -1251,7 +1239,7 @@
     
     <!-- JavaScript -->
     <script>
-        // Initialize Splide slider
+        // Slider
         document.addEventListener('DOMContentLoaded', function() {
             new Splide('.splide', {
                 type: 'fade',
@@ -1264,7 +1252,7 @@
             }).mount();
         });
 
-        // Mobile Menu Toggle
+        // Mobile Menu
         const mobileMenuBtn = document.getElementById('mobileMenuBtn');
         const mainNav = document.getElementById('mainNav');
         
@@ -1274,7 +1262,7 @@
                 '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
         });
         
-        // Smooth Scrolling for Anchor Links
+        // Smooth Scroll
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function(e) {
                 if (this.getAttribute('href') === '#') return;
@@ -1287,7 +1275,6 @@
                         behavior: 'smooth'
                     });
                     
-                    // Close mobile menu if open
                     if (mainNav.classList.contains('active')) {
                         mainNav.classList.remove('active');
                         mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
@@ -1296,7 +1283,7 @@
             });
         });
         
-        // Back to Top Button
+        // Back to top
         const backToTop = document.getElementById('backToTop');
         
         window.addEventListener('scroll', () => {
@@ -1314,7 +1301,7 @@
             });
         });
         
-        // Logo scroll to top
+        // Logo → top
         document.querySelector('.logo').addEventListener('click', () => {
             window.scrollTo({
                 top: 0,
@@ -1322,14 +1309,12 @@
             });
         });
         
-        // Animate elements on scroll
+        // Animations on scroll
         const animateOnScroll = () => {
             const elements = document.querySelectorAll('.service-card, .doctor-card, .contact-item');
-            
             elements.forEach(element => {
                 const elementPosition = element.getBoundingClientRect().top;
                 const screenPosition = window.innerHeight / 1.3;
-                
                 if (elementPosition < screenPosition) {
                     element.style.opacity = '1';
                     element.style.transform = 'translateY(0)';
@@ -1348,128 +1333,128 @@
         
         // Traductions
         const translations = {
-            'fr': {
-                'home': 'Accueil',
-                'services': 'Services',
-                'team': 'Équipe',
-                'contact': 'Contact',
-                'title1': 'Centre Médical Medi-Steyls',
-                'subtitle1': 'Votre santé, notre priorité. Des soins professionnels dans un environnement accueillant.',
-                'title2': 'Un accueil chaleureux',
-                'subtitle2': 'Notre équipe médicale vous accueille dans un cadre moderne et confortable.',
-                'appointment': 'Prendre rendez-vous en ligne',
-                'our_services': 'Nos Services',
-                'consultations': 'Consultations médicales',
-                'consultations_desc': 'Consultations générales complètes avec suivi personnalisé pour toute la famille.',
-                'medical_tests': 'Analyses médicales',
-                'medical_tests_desc': 'Examens biologiques avec résultats rapides et interprétation médicale.',
-                'specialized': 'Suivi médical spécialisé',
-                'specialized_desc': 'Prise en charge par des médecins généralistes expérimentés pour vos besoins spécifiques.',
-                'our_team': 'Notre Équipe Médicale',
-                'general_practitioner': 'Médecin généraliste',
-                'doctor1_desc': 'Diplômé en médecine générale (médecine familiale) de l\'ULB. Certificats de formation en coordination médicale (SSMG) et en pédiatrie (ONE). Maître de stage.',
-                'assistant_doctor': 'Médecin généraliste assistant',
-                'doctor2_desc': 'Master en médecine de l\'Université Libre de Bruxelles (ULB). Assistant en médecine générale.',
-                'doctor3_desc': 'Docteur en médecine diplômé de l\'Université Libre de Bruxelles (ULB). Expérience en médecine générale et suivi des patients chroniques.',
-                'doctor4_desc': 'Docteur en médecine diplômé de l\'Université Libre de Bruxelles (ULB). Spécialisé en médecine tropicale avec expérience internationale.',
-                'view_profile': 'Voir le profil',
-                'contact_us': 'Nous contacter',
-                'address': 'Adresse',
-                'access': 'Accès :',
-                'metro': 'Métro Bockstael (11 min à pied - 700m)',
-                'tram': 'Tram 93 - Jacobs Fontaine (4 min à pied - 290m)',
-                'bus': 'Bus 88 - Jacobs Fontaine (4 min à pied - 290m)',
-                'phone': 'Téléphone',
-                'email': 'Email',
-                'opening_hours': 'Horaires d\'ouverture',
-                'weekdays': 'Lundi - Vendredi : 8h30 - 18h',
-                'saturday': 'Samedi (prise de sang) : 8h - 10h',
-                'sunday': 'Dimanche & jours fériés : Service de garde Bruxellois au 1733 (7j/7)',
-                'footer_desc': 'Centre médical offrant des soins de qualité à Laeken, Bruxelles. Votre santé est notre priorité absolue.',
-                'quick_links': 'Accès rapide',
-                'all_rights': 'Tous droits réservés.'
+            fr: {
+                home: 'Accueil',
+                services: 'Services',
+                team: 'Équipe',
+                contact: 'Contact',
+                title1: 'Centre Médical Medi-Steyls',
+                subtitle1: 'Votre santé, notre priorité. Des soins professionnels dans un environnement accueillant.',
+                title2: 'Un accueil chaleureux',
+                subtitle2: 'Notre équipe médicale vous accueille dans un cadre moderne et confortable.',
+                appointment: 'Prendre rendez-vous en ligne',
+                our_services: 'Nos Services',
+                consultations: 'Consultations médicales',
+                consultations_desc: 'Consultations générales complètes avec suivi personnalisé pour toute la famille.',
+                medical_tests: 'Analyses médicales',
+                medical_tests_desc: 'Examens biologiques avec résultats rapides et interprétation médicale.',
+                specialized: 'Suivi médical spécialisé',
+                specialized_desc: 'Prise en charge par des médecins généralistes expérimentés pour vos besoins spécifiques.',
+                our_team: 'Notre Équipe Médicale',
+                general_practitioner: 'Médecin généraliste',
+                doctor1_desc: 'Diplômé en médecine générale (médecine familiale) de l\'ULB. Certificats de formation en coordination médicale (SSMG) et en pédiatrie (ONE). Maître de stage.',
+                assistant_doctor: 'Médecin généraliste assistant',
+                doctor2_desc: 'Master en médecine de l\'Université Libre de Bruxelles (ULB). Assistant en médecine générale.',
+                doctor3_desc: 'Docteur en médecine diplômé de l\'Université Libre de Bruxelles (ULB). Expérience en médecine générale et suivi des patients chroniques.',
+                doctor4_desc: 'Docteur en médecine diplômé de l\'Université Libre de Bruxelles (ULB). Spécialisé en médecine tropicale avec expérience internationale.',
+                view_profile: 'Voir le profil',
+                contact_us: 'Nous contacter',
+                address: 'Adresse',
+                access: 'Accès :',
+                metro: 'Métro Bockstael (11 min à pied - 700m)',
+                tram: 'Tram 93 - Jacobs Fontaine (4 min à pied - 290m)',
+                bus: 'Bus 88 - Jacobs Fontaine (4 min à pied - 290m)',
+                phone: 'Téléphone',
+                email: 'Email',
+                opening_hours: 'Horaires d\'ouverture',
+                weekdays: 'Lundi - Vendredi : 8h30 - 18h',
+                saturday: 'Samedi (prise de sang) : 8h - 10h',
+                sunday: 'Dimanche & jours fériés : Service de garde Bruxellois au 1733 (7j/7)',
+                footer_desc: 'Centre médical offrant des soins de qualité à Laeken, Bruxelles. Votre santé est notre priorité absolue.',
+                quick_links: 'Accès rapide',
+                all_rights: 'Tous droits réservés.'
             },
-            'nl': {
-                'home': 'Home',
-                'services': 'Diensten',
-                'team': 'Team',
-                'contact': 'Contact',
-                'title1': 'Medisch Centrum Medi-Steyls',
-                'subtitle1': 'Uw gezondheid, onze prioriteit. Professionele zorg in een gastvrije omgeving.',
-                'title2': 'Een warm welkom',
-                'subtitle2': 'Ons medisch team verwelkomt u in een moderne en comfortabele omgeving.',
-                'appointment': 'Online afspraak maken',
-                'our_services': 'Onze Diensten',
-                'consultations': 'Medische consultaties',
-                'consultations_desc': 'Volledige algemene consultaties met persoonlijke opvolging voor het hele gezin.',
-                'medical_tests': 'Medische analyses',
-                'medical_tests_desc': 'Biologische onderzoeken met snelle resultaten en medische interpretatie.',
-                'specialized': 'Gespecialiseerde medische opvolging',
-                'specialized_desc': 'Begeleiding door ervaren huisartsen voor uw specifieke behoeften.',
-                'our_team': 'Ons Medisch Team',
-                'general_practitioner': 'Huisarts',
-                'doctor1_desc': 'Gediplomeerd in huisartsgeneeskunde (familiegeneeskunde) aan de ULB. Opleidingscertificaten in medische coördinatie (SSMG) en pediatrie (ONE). Stagebegeleider.',
-                'assistant_doctor': 'Assistent-huisarts',
-                'doctor2_desc': 'Master in de geneeskunde aan de Université Libre de Bruxelles (ULB). Assistent in huisartsgeneeskunde.',
-                'doctor3_desc': 'Doctor in de geneeskunde afgestudeerd aan de Université Libre de Bruxelles (ULB). Ervaring in huisartsgeneeskunde en opvolging van chronische patiënten.',
-                'doctor4_desc': 'Doctor in de geneeskunde afgestudeerd aan de Université Libre de Bruxelles (ULB). Gespecialiseerd in tropische geneeskunde met internationale ervaring.',
-                'view_profile': 'Profiel bekijken',
-                'contact_us': 'Contacteer Ons',
-                'address': 'Adres',
-                'access': 'Toegang:',
-                'metro': 'Metro Bockstael (11 min wandelen - 700m)',
-                'tram': 'Tram 93 - Jacobs Fontaine (4 min wandelen - 290m)',
-                'bus': 'Bus 88 - Jacobs Fontaine (4 min wandelen - 290m)',
-                'phone': 'Telefoon',
-                'email': 'E-mail',
-                'opening_hours': 'Openingsuren',
-                'weekdays': 'Maandag - Vrijdag: 8u30 - 18u',
-                'saturday': 'Zaterdag (bloedafname): 9u - 13u',
-                'sunday': 'Zondag & feestdagen: Brusselse wachtdienst op 1733 (7d/7)',
-                'footer_desc': 'Medisch centrum dat kwaliteitszorg biedt in Laken, Brussel. Uw gezondheid is onze absolute prioriteit.',
-                'quick_links': 'Snelle Links',
-                'all_rights': 'Alle rechten voorbehouden.'
+            nl: {
+                home: 'Home',
+                services: 'Diensten',
+                team: 'Team',
+                contact: 'Contact',
+                title1: 'Medisch Centrum Medi-Steyls',
+                subtitle1: 'Uw gezondheid, onze prioriteit. Professionele zorg in een gastvrije omgeving.',
+                title2: 'Een warm welkom',
+                subtitle2: 'Ons medisch team verwelkomt u in een moderne en comfortabele omgeving.',
+                appointment: 'Online afspraak maken',
+                our_services: 'Onze Diensten',
+                consultations: 'Medische consultaties',
+                consultations_desc: 'Volledige algemene consultaties met persoonlijke opvolging voor het hele gezin.',
+                medical_tests: 'Medische analyses',
+                medical_tests_desc: 'Biologische onderzoeken met snelle resultaten en medische interpretatie.',
+                specialized: 'Gespecialiseerde medische opvolging',
+                specialized_desc: 'Begeleiding door ervaren huisartsen voor uw specifieke behoeften.',
+                our_team: 'Ons Medisch Team',
+                general_practitioner: 'Huisarts',
+                doctor1_desc: 'Gediplomeerd in huisartsgeneeskunde (familiegeneeskunde) aan de ULB. Opleidingscertificaten in medische coördinatie (SSMG) en pediatrie (ONE). Stagebegeleider.',
+                assistant_doctor: 'Assistent-huisarts',
+                doctor2_desc: 'Master in de geneeskunde aan de Université Libre de Bruxelles (ULB). Assistent in huisartsgeneeskunde.',
+                doctor3_desc: 'Doctor in de geneeskunde afgestudeerd aan de Université Libre de Bruxelles (ULB). Ervaring in huisartsgeneeskunde en opvolging van chronische patiënten.',
+                doctor4_desc: 'Doctor in de geneeskunde afgestudeerd aan de Université Libre de Bruxelles (ULB). Gespecialiseerd in tropische geneeskunde met internationale ervaring.',
+                view_profile: 'Profiel bekijken',
+                contact_us: 'Contacteer Ons',
+                address: 'Adres',
+                access: 'Toegang:',
+                metro: 'Metro Bockstael (11 min wandelen - 700m)',
+                tram: 'Tram 93 - Jacobs Fontaine (4 min wandelen - 290m)',
+                bus: 'Bus 88 - Jacobs Fontaine (4 min wandelen - 290m)',
+                phone: 'Telefoon',
+                email: 'E-mail',
+                opening_hours: 'Openingsuren',
+                weekdays: 'Maandag - Vrijdag: 8u30 - 18u',
+                saturday: 'Zaterdag (bloedafname): 9u - 13u',
+                sunday: 'Zondag & feestdagen: Brusselse wachtdienst op 1733 (7d/7)',
+                footer_desc: 'Medisch centrum dat kwaliteitszorg biedt in Laken, Brussel. Uw gezondheid is onze absolute prioriteit.',
+                quick_links: 'Snelle Links',
+                all_rights: 'Alle rechten voorbehouden.'
             },
-            'en': {
-                'home': 'Home',
-                'services': 'Services',
-                'team': 'Team',
-                'contact': 'Contact',
-                'title1': 'Medical Center Medi-Steyls',
-                'subtitle1': 'Your health, our priority. Professional care in a welcoming environment.',
-                'title2': 'A warm welcome',
-                'subtitle2': 'Our medical team welcomes you in a modern and comfortable setting.',
-                'appointment': 'Book appointment online',
-                'our_services': 'Our Services',
-                'consultations': 'Medical consultations',
-                'consultations_desc': 'Complete general consultations with personalized follow-up for the whole family.',
-                'medical_tests': 'Medical tests',
-                'medical_tests_desc': 'Biological examinations with quick results and medical interpretation.',
-                'specialized': 'Specialized medical follow-up',
-                'specialized_desc': 'Care by experienced general practitioners for your specific needs.',
-                'our_team': 'Our Medical Team',
-                'general_practitioner': 'General Practitioner',
-                'doctor1_desc': 'Graduated in general medicine (family medicine) from ULB. Training certificates in medical coordination (SSMG) and pediatrics (ONE). Internship supervisor.',
-                'assistant_doctor': 'Assistant General Practitioner',
-                'doctor2_desc': 'Master in Medicine from the Université Libre de Bruxelles (ULB). Assistant in general Medicine.',
-                'doctor3_desc': 'Doctor of Medicine graduated from the Université Libre de Bruxelles (ULB). Experience in general practice and follow-up of chronic patients.',
-                'doctor4_desc': 'Doctor of Medicine graduated from the Université Libre de Bruxelles (ULB). Specialized in tropical medicine with international experience.',
-                'view_profile': 'View profile',
-                'contact_us': 'Contact Us',
-                'address': 'Address',
-                'access': 'Access:',
-                'metro': 'Metro Bockstael (11 min walk - 700m)',
-                'tram': 'Tram 93 - Jacobs Fontaine (4 min walk - 290m)',
-                'bus': 'Bus 88 - Jacobs Fontaine (4 min walk - 290m)',
-                'phone': 'Phone',
-                'email': 'Email',
-                'opening_hours': 'Opening Hours',
-                'weekdays': 'Monday - Friday: 8:30am - 6pm',
-                'saturday': 'Saturday (blood tests): 9am - 1pm',
-                'sunday': 'Sunday & Holidays: Brussels on-call service at 1733 (7d/7)',
-                'footer_desc': 'Medical center providing quality care in Laeken, Brussels. Your health is our absolute priority.',
-                'quick_links': 'Quick Links',
-                'all_rights': 'All rights reserved.'
+            en: {
+                home: 'Home',
+                services: 'Services',
+                team: 'Team',
+                contact: 'Contact',
+                title1: 'Medical Center Medi-Steyls',
+                subtitle1: 'Your health, our priority. Professional care in a welcoming environment.',
+                title2: 'A warm welcome',
+                subtitle2: 'Our medical team welcomes you in a modern and comfortable setting.',
+                appointment: 'Book appointment online',
+                our_services: 'Our Services',
+                consultations: 'Medical consultations',
+                consultations_desc: 'Complete general consultations with personalized follow-up for the whole family.',
+                medical_tests: 'Medical tests',
+                medical_tests_desc: 'Biological examinations with quick results and medical interpretation.',
+                specialized: 'Specialized medical follow-up',
+                specialized_desc: 'Care by experienced general practitioners for your specific needs.',
+                our_team: 'Our Medical Team',
+                general_practitioner: 'General Practitioner',
+                doctor1_desc: 'Graduated in general medicine (family medicine) from ULB. Training certificates in medical coordination (SSMG) and pediatrics (ONE). Internship supervisor.',
+                assistant_doctor: 'Assistant General Practitioner',
+                doctor2_desc: 'Master in Medicine from the Université Libre de Bruxelles (ULB). Assistant in general Medicine.',
+                doctor3_desc: 'Doctor of Medicine graduated from the Université Libre de Bruxelles (ULB). Experience in general practice and follow-up of chronic patients.',
+                doctor4_desc: 'Doctor of Medicine graduated from the Université Libre de Bruxelles (ULB). Specialized in tropical medicine with international experience.',
+                view_profile: 'View profile',
+                contact_us: 'Contact Us',
+                address: 'Address',
+                access: 'Access:',
+                metro: 'Metro Bockstael (11 min walk - 700m)',
+                tram: 'Tram 93 - Jacobs Fontaine (4 min walk - 290m)',
+                bus: 'Bus 88 - Jacobs Fontaine (4 min walk - 290m)',
+                phone: 'Phone',
+                email: 'Email',
+                opening_hours: 'Opening Hours',
+                weekdays: 'Monday - Friday: 8:30am - 6pm',
+                saturday: 'Saturday (blood tests): 9am - 1pm',
+                sunday: 'Sunday & Holidays: Brussels on-call service at 1733 (7d/7)',
+                footer_desc: 'Medical center providing quality care in Laeken, Brussels. Your health is our absolute priority.',
+                quick_links: 'Quick Links',
+                all_rights: 'All rights reserved.'
             }
         };
 
@@ -1480,16 +1465,11 @@
                     element.textContent = translations[lang][key];
                 }
             });
-            
             document.documentElement.lang = lang;
-            
             document.querySelectorAll('.language-btn').forEach(btn => {
                 btn.classList.remove('active');
-                if (btn.getAttribute('data-lang') === lang) {
-                    btn.classList.add('active');
-                }
+                if (btn.getAttribute('data-lang') === lang) btn.classList.add('active');
             });
-            
             localStorage.setItem('preferredLanguage', lang);
         }
 
@@ -1504,7 +1484,7 @@
             });
         });
 
-        // Effet de neige
+        // Neige
         function createSnowflake() {
             const snowflake = document.createElement('div');
             snowflake.className = 'snowflake';
@@ -1518,7 +1498,7 @@
             snowflake.style.left = startLeft + 'px';
             snowflake.style.fontSize = size + 'px';
             snowflake.style.animation = `snow-fall ${duration}s linear forwards`;
-            snowflake.style.setProperty('--x-move', drift + 'px');
+            snowflake.style.setProperty('--x-move', drift + 'px';
 
             document.body.appendChild(snowflake);
 
