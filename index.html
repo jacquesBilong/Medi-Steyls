@@ -12,17 +12,17 @@
     <meta property="og:title" content="Centre Médical Medi-Steyls - Laeken">
     <meta property="og:description" content="Centre médical à Laeken. Médecins généralistes, pédiatrie, soins de qualité, prise de rendez-vous en ligne.">
     <meta property="og:url" content="https://www.medi-steyls.be/">
-    <meta property="og:image" content="https://www.medi-steyls.be/foto/logo.png">
+    <meta property="og:image" content="https://www.medi-steyls.be/logo.png">
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Centre Médical Medi-Steyls - Laeken">
     <meta name="twitter:description" content="Votre santé, notre priorité.">
-    <meta name="twitter:image" content="https://www.medi-steyls.be/foto/logo.png">
+    <meta name="twitter:image" content="https://www.medi-steyls.be/logo.png">
 
     <!-- Canonical & Favicon -->
     <link rel="canonical" href="https://www.medi-steyls.be/">
-    <link rel="icon" type="image/png" href="foto/logo.png">
+    <link rel="icon" type="image/png" href="logo.png">
 
     <title>Centre Médical Medi-Steyls - Soins professionnels</title>
 
@@ -98,46 +98,27 @@
         .logo {
             display: flex;
             align-items: center;
-            gap: 12px;
+            justify-content: center;
             cursor: pointer;
-            transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
             flex-shrink: 0;
-            padding: 6px 14px;
+            padding: 6px 26px;
             border-radius: 999px;
-            background: rgba(255, 255, 255, 0.04);
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.16);
+            background: rgba(0, 0, 0, 0.12);
+            box-shadow: 0 8px 22px rgba(0, 0, 0, 0.28);
+            transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
         }
         
         .logo img {
-            height: 60px; /* ton logo transparent doit remplacer ce fichier */
+            height: 70px;           /* ajuste ici si tu veux plus grand/petit */
             width: auto;
             display: block;
-            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.25));
+            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.45));
         }
 
         .logo:hover {
-            transform: translateY(-2px) scale(1.02);
-            background: rgba(255, 255, 255, 0.10);
-            box-shadow: 0 10px 24px rgba(0, 0, 0, 0.25);
-        }
-        
-        .logo-text {
-            display: flex;
-            flex-direction: column;
-            line-height: 1.2;
-        }
-        
-        .logo-main {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: var(--white);
-        }
-        
-        .logo-sub {
-            font-size: 0.8rem;
-            font-weight: 400;
-            color: rgba(255, 255, 255, 0.9);
-            letter-spacing: 1px;
+            transform: translateY(-2px) scale(1.03);
+            background: rgba(0, 0, 0, 0.18);
+            box-shadow: 0 14px 32px rgba(0, 0, 0, 0.35);
         }
         
         /* Language Switcher */
@@ -270,6 +251,7 @@
             padding: 0 2rem;
         }
         
+        /* >>> ICI : plus d’overlay bleu, image nette <<< */
         .splide__slide::before {
             content: '';
             position: absolute;
@@ -277,8 +259,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            /* overlay un peu plus clair pour bien lire le texte */
-            background: linear-gradient(135deg, rgba(13,59,102,0.55), rgba(26,95,158,0.40));
+            background: transparent;
         }
         
         .slide-img {
@@ -289,7 +270,7 @@
             height: 100%;
             object-fit: cover;
             z-index: -1;
-            filter: brightness(0.9);
+            filter: none;  /* pas de flou, pas de foncé */
         }
         
         .hero-content {
@@ -303,7 +284,7 @@
         .hero-content h2 {
             font-size: 3.3rem;
             margin-bottom: 1.5rem;
-            color: #ffffff; /* forcer blanc */
+            color: #ffffff;
             text-shadow: 2px 3px 10px rgba(0, 0, 0, 0.75);
             line-height: 1.2;
         }
@@ -907,20 +888,12 @@
                 min-height: 350px;
             }
             
-            .logo-main {
-                font-size: 1.3rem;
-            }
-            
-            .logo-sub {
-                font-size: 0.7rem;
-            }
-
             .logo {
-                padding: 5px 10px;
+                padding: 5px 18px;
             }
 
             .logo img {
-                height: 52px;
+                height: 60px;
             }
         }
         
@@ -959,14 +932,6 @@
             .footer-col {
                 margin-bottom: 1.5rem;
             }
-            
-            .logo-main {
-                font-size: 1.2rem;
-            }
-            
-            .logo-sub {
-                font-size: 0.6rem;
-            }
         }
         
         /* Très grands écrans */
@@ -1000,12 +965,8 @@
     <header>
         <div class="header-container">
             <div class="logo" onclick="window.location.href='#home'">
-                <!-- IMPORTANT : mets ici TON PNG TRANSPARENT -->
-                <img src="logo.png" alt="">
-                <div class="logo-text">
-                    <span class="logo-main">Medi-Steyls</span>
-                    <span class="logo-sub">CENTRE MÉDICAL</span>
-                </div>
+                <!-- TON PNG LOGO TRANSPARENT -->
+                <img src="logo.png" alt="Centre Médical Medi-Steyls - Logo">
             </div>
 
             <nav id="mainNav">
@@ -1353,7 +1314,7 @@
             });
         });
         
-        // Make logo clickable (scroll to top)
+        // Logo scroll to top
         document.querySelector('.logo').addEventListener('click', () => {
             window.scrollTo({
                 top: 0,
@@ -1361,7 +1322,7 @@
             });
         });
         
-        // Animate elements when they come into view
+        // Animate elements on scroll
         const animateOnScroll = () => {
             const elements = document.querySelectorAll('.service-card, .doctor-card, .contact-item');
             
@@ -1376,7 +1337,6 @@
             });
         };
         
-        // Set initial state for animation
         document.querySelectorAll('.service-card, .doctor-card, .contact-item').forEach(element => {
             element.style.opacity = '0';
             element.style.transform = 'translateY(30px)';
@@ -1386,7 +1346,7 @@
         window.addEventListener('scroll', animateOnScroll);
         window.addEventListener('load', animateOnScroll);
         
-        // Language Translation
+        // Traductions
         const translations = {
             'fr': {
                 'home': 'Accueil',
@@ -1513,7 +1473,6 @@
             }
         };
 
-        // Language switcher functionality
         function updateLanguage(lang) {
             document.querySelectorAll('.translate').forEach(element => {
                 const key = element.getAttribute('data-translate');
@@ -1552,9 +1511,9 @@
             snowflake.textContent = '❄';
 
             const startLeft = Math.random() * window.innerWidth;
-            const duration = 8 + Math.random() * 7; // 8 à 15s
-            const size = 8 + Math.random() * 10;   // px
-            const drift = (Math.random() - 0.5) * 80; // mouvement horizontal
+            const duration = 8 + Math.random() * 7;
+            const size = 8 + Math.random() * 10;
+            const drift = (Math.random() - 0.5) * 80;
 
             snowflake.style.left = startLeft + 'px';
             snowflake.style.fontSize = size + 'px';
@@ -1568,7 +1527,6 @@
             }, duration * 1000);
         }
 
-        // Lancer la neige au chargement
         window.addEventListener('load', () => {
             for (let i = 0; i < 40; i++) {
                 setTimeout(createSnowflake, i * 150);
